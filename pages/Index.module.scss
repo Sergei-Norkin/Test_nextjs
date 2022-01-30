@@ -1,0 +1,65 @@
+.main{
+    font-family: arial,sans-serif;
+    margin: 30px;
+    width: 50%;
+}
+.title {
+    font-weight: 400;
+    font-size: 30px;
+    color: #202124;
+}
+.postBlock{
+    margin-bottom: 30px;
+}
+.postId{
+    color: #4d5156;
+    font-size: 14px;
+}
+.postTitle{
+    color: #1a0dab;
+    font-size: 20px;
+    margin: 1.5px 0px 5px 0px;
+    cursor: pointer;
+}
+.firstLetter, .forthLetter, .secondLetter, .sixLetter, .thirdLetter, .fifthLetter, .sevensLetter, .eightsLetter{
+    margin-left: 1px;
+    font-weight: 500;
+}
+.firstLetter, .forthLetter, .eightsLetter{
+    color: #4285f4;
+}
+.secondLetter, .sixLetter{
+    color: #f90101;
+}
+.thirdLetter, .sevensLetter{
+    color: #F2B50F;
+}
+.fifthLetter{
+    color: #00933B;
+}
+.postTitle a{
+    text-decoration: none;
+}
+.postBody{
+    color: #4d5156;
+    font-size: 14px;
+    line-height: 1.58;
+    text-align: left;
+}
+.pagination{
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+}
+.pageItem{
+    margin: 5px;
+    color: #4285f4;
+    font-size: 14px;
+    cursor: pointer;
+}
+.active{
+    color: #202124;
+}

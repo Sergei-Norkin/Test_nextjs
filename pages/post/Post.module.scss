@@ -1,0 +1,21 @@
+.postButton a{
+    text-decoration: none;
+    color: #202124;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f3f4;
+    border-radius: 100px;
+    box-sizing: border-box;
+    max-height: none;
+    min-height: 38px;
+    width: 256px;
+    padding-left: 17px;
+    padding-right: 17px;
+}
+.postButton{
+    margin-top: 25px;
+}
