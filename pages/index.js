@@ -4,6 +4,7 @@ import Head from 'next/head'
 import ReactPaginate from 'react-paginate'
 import styles from './Index.module.scss'
 
+
 function Items({ currentItems }) {
     return (
       <>
@@ -29,22 +30,27 @@ function Items({ currentItems }) {
     );
   }
 
-function PaginatedItems( { itemsPerPage }) {
+  export async function getServerSideProps(context) {
+
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts`)
+    const data = await response.json()
+    return { props:{data} }
+  }
+
+function PaginatedItems( {data, itemsPerPage } ) {
     const [currentItems, setCurrentItems] = useState(null)
     const [pageCount, setPageCount] = useState(0)
     const [itemOffset, setItemOffset] = useState(0)
-  
+
     useEffect(async () => {
-      const response = await  fetch ('https://jsonplaceholder.typicode.com/posts')
-      const items = await response.json()
+      const items = await data
       const endOffset = itemOffset + itemsPerPage
       setCurrentItems(items.slice(itemOffset, endOffset))
       setPageCount(Math.ceil(items.length / itemsPerPage))
-    }, [itemOffset, itemsPerPage])
-  
+      }, [itemOffset, itemsPerPage])
+
     const handlePageClick = async (event) => {
-      const response = await  fetch ('https://jsonplaceholder.typicode.com/posts')
-      const items = await response.json()
+      const items = await data
       const newOffset = (event.selected * itemsPerPage) % items.length
       setItemOffset(newOffset)
     }
@@ -70,13 +76,14 @@ function PaginatedItems( { itemsPerPage }) {
             nextClassName={styles.pageItem}
             nextLinkClassName={styles.pageLink}
             activeClassName={styles.active}
+            initialPage ={6}
           />
         </>
       )
     }
 
 
-export default function Posts() {
+export default function Posts(props) {
     return ( 
     <>
         <Head>
@@ -91,7 +98,7 @@ export default function Posts() {
             <span className={styles.fifthLetter}>с</span>
             <span className={styles.sixLetter}>и</span>
           </h1>
-          <PaginatedItems itemsPerPage={4} />
+          <PaginatedItems itemsPerPage={4} data={props.data} />
         </div>
     </>
     )
